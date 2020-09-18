@@ -320,7 +320,7 @@ browsermob-proxy-2.1.4/
 src/
 *.har
 docker*
-*.exe
+./*.exe
 package*.json
 nginx
 temp.txt

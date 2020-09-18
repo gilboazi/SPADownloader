@@ -1,7 +1,10 @@
-### installation:
-python-version==3.7
+## Release-Versions:
+### In releases-folder.
 
-## Just Run ./install.sh
+## To Compile By Your Self:
+#### installation:
+python-version==3.7
+#### Just Run ./install.sh
 
 #### commands in ./install.sh:
 1. python -m venv venv
@@ -12,4 +15,5 @@ python-version==3.7
 6. venv/scripts/python -m pip install pydantic --no-binary pydantic
 7. venv/scripts/pyinstaller extracter.py --onefile --clean --distpath . --windowed
 8. venv/scripts/pyinstaller server.py --onefile --clean --distpath . --windowed
+
 
