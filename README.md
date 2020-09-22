@@ -13,7 +13,7 @@ python-version==3.7
 4. venv/scripts/python -m pip uninstall uvicorn pydantic -y
 5. venv/scripts/python -m pip install uvicorn --no-binary uvicorn
 6. venv/scripts/python -m pip install pydantic --no-binary pydantic
-7. venv/scripts/pyinstaller extracter.py --onefile --clean --distpath . --windowed
-8. venv/scripts/pyinstaller server.py --onefile --clean --distpath . --windowed
+7. venv/scripts/pyinstaller extracter.py --onefile --clean --distpath .
+8. venv/scripts/pyinstaller server.py --onefile --clean --distpath .
 
 
