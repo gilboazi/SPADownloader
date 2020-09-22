@@ -37,8 +37,8 @@ def replace_https_to_http(content: bytes):
         content = content.encode()
     return content.replace(b'https://', b'http://')
 
-INDEX_DOMAIN = input('Enter ROOT URL: ').lower().strip()
-ROOT_DOMAIN = replace_https_to_http(INDEX_DOMAIN).decode().replace('http://', '').strip('/\\').lower()
+INDEX_URL = input('Enter ROOT URL: ').lower().strip()
+ROOT_DOMAIN = replace_https_to_http(INDEX_URL).decode().replace('http://', '').strip('/\\').lower()
 
 @dataclass(init=False)
 class ReqResp:
@@ -156,7 +156,7 @@ def replace_domains_to_relative_static_paths():
 def save_post_requests():
     post_req_map = {}
     for entry in post_entries:
-        if getattr(entry, 'postData', None):
+        if hasattr(entry, 'postData'):
             post_req_map.setdefault(entry.path, []).append({
                 'postData': entry.postData,
                 'resp': {
@@ -184,7 +184,7 @@ def copy_recursively(src_dir: Path, dst_dir: Path):
 def is_url_the_root_index(url: str):
     if isinstance(url, bytes):
         url = url.decode()
-    re.sub()
+    return url in [INDEX_URL, data['log']['pages'][0]['title']]
 
 def get_hash(data: bytes, type='md5'):
     hash_type = type
@@ -198,9 +198,8 @@ replace_domains_to_relative_static_paths()
 
 copy_recursively((STATIC_PATH / ROOT_DOMAIN), STATIC_PATH)
 
-MAIN_URL = INDEX_DOMAIN
 for resp in all_entries:
-    if resp.url in [MAIN_URL, data['log']['pages'][0]['title']]:
+    if is_url_the_root_index(resp.url):
         shutil.copyfile(resp.file_on_disk, STATIC_PATH / 'index.html')
         break
 
