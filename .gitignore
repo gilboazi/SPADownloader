@@ -326,5 +326,5 @@ nginx
 temp.txt
 pyinstaller.help.txt
 Pipfile*
-post_data.json
 compile.sh
+server_data.pickle
